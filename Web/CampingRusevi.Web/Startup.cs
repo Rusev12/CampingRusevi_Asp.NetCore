@@ -9,6 +9,7 @@
     using CampingRusevi.Data.Repositories;
     using CampingRusevi.Data.Seeding;
     using CampingRusevi.Services.Data;
+    using CampingRusevi.Services.Data.OwnerServices;
     using CampingRusevi.Services.Mapping;
     using CampingRusevi.Services.Messaging;
     using CampingRusevi.Web.ViewModels;
@@ -52,6 +53,7 @@
                     {
                         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     }).AddRazorRuntimeCompilation();
+
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -65,6 +67,7 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IOwnerService, OwnerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

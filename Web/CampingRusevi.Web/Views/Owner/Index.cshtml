@@ -1,0 +1,15 @@
+﻿@model CampingRusevi.Web.ViewModels.Owner.OwnerListViewModel;
+
+@{
+    this.ViewData["Title"] = "Settings";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+
+@foreach (var model in Model.Owners)
+{
+    <p>model.Name</p>
+    <p>model.ShortDescription</p>
+}
+
+<a asp-action="AddNewOwner" class="btn btn-primary">Add New</a>
