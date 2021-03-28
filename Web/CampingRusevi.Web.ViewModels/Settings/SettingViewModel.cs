@@ -1,9 +1,8 @@
 ﻿namespace CampingRusevi.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using CampingRusevi.Data.Models;
     using CampingRusevi.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {
