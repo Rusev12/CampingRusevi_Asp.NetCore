@@ -26,7 +26,9 @@
 
         public DbSet<Setting> Settings { get; set; }
 
-        public DbSet<Owner> Owner { get; set; }
+        public DbSet<Owner> Owner { get; set; } 
+
+        public DbSet<Apartment> Apartments { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

@@ -46,4 +46,8 @@
     <ProjectReference Include="..\CampingRusevi.Web.Infrastructure\CampingRusevi.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\CampingRusevi.Web.ViewModels\CampingRusevi.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
 </Project>
