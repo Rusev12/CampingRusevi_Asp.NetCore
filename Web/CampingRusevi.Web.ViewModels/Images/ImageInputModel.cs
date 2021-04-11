@@ -9,6 +9,6 @@
 
         public string Type { get; set; }
 
-        public IFormFile Content { get; set; }
+        public Stream Content { get; set; }
     }
 }

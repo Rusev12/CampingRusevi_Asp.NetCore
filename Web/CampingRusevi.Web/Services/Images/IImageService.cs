@@ -15,5 +15,6 @@
         Task<Stream> GetFullscreen(string id);
 
         Task<List<string>> GetAllImages();
+
     }
 }

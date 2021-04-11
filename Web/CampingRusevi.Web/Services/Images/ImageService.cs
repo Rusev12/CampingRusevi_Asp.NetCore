@@ -22,8 +22,9 @@
         private readonly ApplicationDbContext data;
         private readonly IServiceScopeFactory serviceScopeFactory;
 
-        public ImageService(ApplicationDbContext data,
-                         IServiceScopeFactory serviceScopeFactory)
+        public ImageService(
+            ApplicationDbContext data,
+            IServiceScopeFactory serviceScopeFactory)
         {
             this.data = data;
             this.serviceScopeFactory = serviceScopeFactory;
@@ -31,8 +32,6 @@
 
         public async Task Process(IEnumerable<ImageInputModel> images)
         {
-            // Instead of IServiceScopeFactory, we may use a concurrent dictionary to get the image data and then store everything in the database with a single transaction.
-
             var tasks = images
                 .Select(image => Task.Run(async () =>
                 {
@@ -55,7 +54,7 @@
                             OriginalType = image.Type,
                             OriginalContent = original,
                             ThumbnailContent = thumbnail,
-                            FullscreenContent = fullscreen
+                            FullscreenContent = fullscreen,
                         });
 
                         await database.SaveChangesAsync();
@@ -89,6 +88,7 @@
 
             if (width > resizeWidth)
             {
+                //height = 200;
                 height = (int)((double)resizeWidth / width * height);
                 width = resizeWidth;
             }
@@ -103,7 +103,7 @@
 
             await image.SaveAsJpegAsync(memoryStream, new JpegEncoder
             {
-                Quality = 75
+                Quality = 75,
             });
 
             return memoryStream.ToArray();

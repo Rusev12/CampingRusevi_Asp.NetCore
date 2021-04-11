@@ -20,6 +20,7 @@
         [HttpGet]
         public IActionResult Upload() => this.View();
 
+        // Limit request 100mb
         [HttpPost]
         [RequestSizeLimit(100 * 1024 * 1024)]
         public async Task<IActionResult> Upload(IFormFile[] images)
@@ -34,7 +35,7 @@
             {
                 Name = i.FileName,
                 Type = i.ContentType,
-                Content = i.OpenReadStream()
+                Content = i.OpenReadStream(),
             }));
 
             return this.RedirectToAction(nameof(this.Done));
@@ -56,7 +57,7 @@
             headers.CacheControl = new CacheControlHeaderValue
             {
                 Public = true,
-                MaxAge = TimeSpan.FromDays(30)
+                MaxAge = TimeSpan.FromDays(30),
             };
 
             headers.Expires = new DateTimeOffset(DateTime.UtcNow.AddDays(30));
@@ -64,7 +65,9 @@
             return this.File(image, "image/jpeg");
         }
 
-        public IActionResult Done() => this.View();
+        public IActionResult Done()
+        {
+            return this.View();
+        }
     }
 }
-

@@ -19,5 +19,7 @@
         public byte[] ThumbnailContent { get; set; }
 
         public byte[] FullscreenContent { get; set; }
+
+        public string Test { get; set; }
     }
 }
