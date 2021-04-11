@@ -12,6 +12,7 @@
     using CampingRusevi.Services.Data.OwnerServices;
     using CampingRusevi.Services.Mapping;
     using CampingRusevi.Services.Messaging;
+    using CampingRusevi.Web.Services.ImageService;
     using CampingRusevi.Web.ViewModels;
 
     using Microsoft.AspNetCore.Builder;
@@ -68,6 +69,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IOwnerService, OwnerService>();
+            services.AddTransient<IImageService, ImageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -110,6 +112,14 @@
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapRazorPages();
                     });
+
+            app
+               .ApplicationServices
+               .CreateScope()
+               .ServiceProvider
+               .GetRequiredService<ApplicationDbContext>()
+               .Database
+               .Migrate();
         }
     }
 }

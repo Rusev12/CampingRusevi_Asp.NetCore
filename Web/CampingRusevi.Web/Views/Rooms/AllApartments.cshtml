@@ -1,0 +1,9 @@
+﻿@model CampingRusevi.Web.ViewModels.Rooms.AllRoomsVwModel
+<h1>All Apartments</h1>
+
+@foreach (var room in Model.AllRooms)
+{
+    <p>@room.RoomDescription</p>
+    <img src= @room.MainImagePath. alt="Alternate Text" />
+}
+

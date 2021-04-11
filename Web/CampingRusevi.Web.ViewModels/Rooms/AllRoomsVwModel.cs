@@ -4,6 +4,6 @@
 
     public class AllRoomsVwModel
     {
-        IEnumerable<RoomVwModel> AllRooms { get; set; }
+        public IEnumerable<RoomVwModel> AllRooms { get; set; }
     }
 }

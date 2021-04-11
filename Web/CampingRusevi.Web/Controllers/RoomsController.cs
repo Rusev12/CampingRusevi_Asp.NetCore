@@ -25,6 +25,11 @@
             return this.View();
         }
 
+        public async Task<IActionResult> AllApartments()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Create(RoomVwModel model)
         {
             if (!this.ModelState.IsValid)
@@ -41,7 +46,7 @@
             await this._repository.AddAsync(apartment);
             await this._repository.SaveChangesAsync();
 
-            return this.RedirectToAction.(nameof(this.Index));
+            return this.RedirectToAction(nameof(this.Index));
         }
     }
 }
